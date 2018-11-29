@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>关于 iView Cli</title>
+    <!--<link rel="stylesheet" href="../assets/css/iview.css">-->
+    <style type="text/css">
+        body{
+            background: #eee;
+            overflow: hidden;
+        }
+        .about{
+            text-align: center;
+            padding: 15px 0;
+        }
+        .about img{
+            width: 70px;
+        }
+    </style>
+    <script type="text/javascript">
+    const path = require('path');
+    const fs = require('fs');
+    const appInfo = require('../src/appinfo')
+    // let _path = path.join(__dirname, '../conf/lang.json');
+    // let data = fs.readFileSync(_path);
+    document.title = appInfo.appAbout;
+    function openLink(event) {
+      event.preventDefault();
+      require('electron').shell.openExternal('https://github.com/iview/iview-cli');
+    }
+    </script>
+</head>
+<body>
+<div class="about">
+    <img src="../assets/logo.png">
+    <p>  v2.7.3</p>
+    <a href="https://github.com/iview/iview-cli" onclick="openLink(event)">https://github.com/iview/iview-cli</a>
+</div>
+</body>
+</html>
