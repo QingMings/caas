@@ -114,13 +114,16 @@ html, body {
 
 #app {
   height: calc(100% - 32px);
-  margin-top: 34px;
+  margin-top: 32px;
+  line-height: 1.0;
   //padding:20px;
-  overflow: auto;
+  //overflow: auto;
 
   .home {
+    height: 100%;
+
     #topPane {
-      width: calc(100% - 2px);
+      width: 100%;
       height: 96px;
       text-align: left;
 
@@ -129,7 +132,7 @@ html, body {
         background-image: url(../image/top/top_background.png);
         background-position: 0px 36px;
         height: 100%;
-        width: calc(100% - 2px);
+        width: 100%;
 
         .menu-app-logo {
           user-select: none;
@@ -139,16 +142,33 @@ html, body {
           opacity: 1;
         }
 
+        .side-toggle {
+          height: 30px;
+          width: 100%;
+          text-align: right;
+          color: white;
+
+          .ivu-icon {
+
+            background: #02867a;
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.2);
+            }
+          }
+        }
+
         .menu-container {
           float: left;
           height: 100%;
+          width: calc(100% - 250px);
 
           .main-menu-container {
             display: grid;
             grid-template-columns: repeat(10, 74px);
             top: 0;
             right: 0;
-            height: 50%;
+            height: 40%;
 
             .menu-button {
               grid-row: 1 / span 1;
@@ -182,13 +202,124 @@ html, body {
         .sub-menu-container {
           float: left;
           display: grid;
-          grid-template-columns: repeat(10, 55px);
+          grid-template-columns: repeat(10, 64px);
           top: 0;
           right: 0;
-          height: 50%;
+          height: 60%;
           background-color: #f2f2f2;
+          width: 100%;
+          padding-left: 12px;
+
+          .sub-menu-button {
+            vertical-align: middle;
+            grid-row: 1 / span 1;
+            display: -webkit-box;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            user-select: none;
+            cursor: default;
+            padding-right: 2px;
+            margin: 6px 0px;
+            font-size: 12px;
+            text-align: center;
+
+            .sub-menu-btn-wrapper {
+              display: -webkit-box;
+              -webkit-box-pack: center;
+              justify-content: center;
+              align-items: center;
+              -webkit-box-align: center;
+              width: 55px;
+              padding: 2px;
+              border: 1px solid #f2f2f2;
+
+              &:hover {
+                border: 1px solid #587776;
+                border-radius: 3px;
+              }
+
+              .sub-menu-icon {
+                width: 24px;
+                height: 24px;
+              }
+
+              .sub-menu-button-text {
+                display: inline-block;
+                width: 50px;
+              }
+            }
+
+          }
         }
       }
+    }
+
+    #viewer {
+      display: inline-block;
+      height: calc(100% - 96px);
+      width: 100%;
+
+      .ivu-layout {
+        height: 100%;
+      }
+
+      .ivu-layout-sider {
+        background: #3c9089;
+      }
+
+      #leftPane {
+        width: 250px;
+        height: 100%;
+        float: left;
+        text-align: left;
+
+        .query-wrapper {
+          border-top: 2px solid #3c9089;
+          border-bottom: 2px solid #3c9089;
+          padding: 0px 2px;
+        }
+
+        .ivu-collapse {
+          background-color: #96cecc;
+          border-radius: 3px;
+          border: 1px solid #416565;
+          border-bottom: 0px;
+
+          .ivu-collapse-item {
+            border-top: 1px solid #416565;
+
+            &:first-child {
+              border-top: 0;
+            }
+
+            .ivu-collapse-header {
+              height: 24px;
+              line-height: 24px;
+            }
+
+
+            .ivu-collapse-content {
+              color: #ffffff;
+              padding: 0 16px;
+              background-color: #3c9089;
+            }
+          }
+
+          .ivu-collapse-item-active {
+            .ivu-collapse-header {
+              border-bottom: 1px solid #416565;
+            }
+          }
+        }
+      }
+
+      #cesium-container {
+        //width: calc(100% - 250px);
+        height: 100%;
+        float: left;
+      }
+
     }
   }
 }

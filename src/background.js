@@ -22,6 +22,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: appInfo.mainWindow.width,
     height: appInfo.mainWindow.height,
+    minHeight: 768,
+    minWidth: 1024,
     titleBarStyle: 'hiddenInset',
     frame: false
   });

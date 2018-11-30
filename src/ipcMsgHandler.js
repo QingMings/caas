@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { shell } from 'electron';
 import { menu } from './resource';
+
 const handlerList = _ipc => ({
   ['open-shell'](event, url) {
     shell.openExternal(url);
@@ -10,17 +11,26 @@ const handlerList = _ipc => ({
       _ipc.sendToClient('request-back', data);
     };
 
-    requestBack({ success: true, data: category});
+    requestBack({
+      success: true,
+      data: category
+    });
   },
-  ['init-menu'](event,param) {
+  ['init-menu'](event, param) {
     const requestBack = (data) => {
-      _ipc.sendToClient('response-menu',data);
+      _ipc.sendToClient('response-menu', data);
     };
     requestBack({
       success: true,
       data: menu
-    })
+    });
+  },
+  ['collapsed-sider'](event, param) {
+    const requestBack = (data) => {
+      _ipc.sendToClient('collapsed-sider', data);
+    };
+    requestBack({});
   }
 });
 
-export default handlerList
+export default handlerList;
