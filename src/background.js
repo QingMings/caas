@@ -24,7 +24,7 @@ function createWindow() {
     height: appInfo.mainWindow.height,
     minHeight: 768,
     minWidth: 1024,
-    titleBarStyle: 'hiddenInset',
+    // titleBarStyle: 'hiddenInset',
     frame: false
   });
 

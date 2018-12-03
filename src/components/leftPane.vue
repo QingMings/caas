@@ -1,12 +1,15 @@
 <template>
   <div id="leftPane">
     <div class="query-wrapper">
-      <Input search placeholder="输入单位名搜索" />
+      <Input search placeholder="输入单位名搜索"/>
     </div>
     <Collapse v-model="value2" accordion>
       <Panel name="1">
         按级别
-        <p slot="content">史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。</p>
+        <!--<p slot="content">史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。</p>-->
+        <p slot="content">
+          <Tree :data="data5"  show-checkbox :render="renderContent"></Tree>
+        </p>
       </Panel>
       <Panel name="2">
         按行政区域
@@ -33,9 +36,119 @@ export default {
   name: 'leftPane',
   data() {
     return {
-      value2: '1'
+      value2: '1',
+      data5: [
+        {
+          title: 'parent 1',
+          expand: true,
+          render: (h, { root, node, data }) => h('span', {
+            style: {
+              display: 'inline-block',
+              width: '100%'
+            }
+          }, [
+            h('span', [
+              h('Icon', {
+                props: {
+                  type: 'ios-folder-outline'
+                },
+                style: {
+                  marginRight: '8px'
+                }
+              }),
+              h('span', data.title)
+            ]),
+            h('span', {
+              style: {
+                display: 'inline-block',
+                float: 'right',
+                marginRight: '32px'
+              }
+            })
+          ]),
+          children: [
+            {
+              title: 'child 1-1',
+              expand: true,
+              children: [
+                {
+                  title: 'leaf 1-1-1',
+                  expand: true
+                },
+                {
+                  title: 'leaf 1-1-2',
+                  expand: true
+                }
+              ]
+            },
+            {
+              title: 'child 1-2',
+              expand: true,
+              children: [
+                {
+                  title: 'leaf 1-2-1',
+                  expand: true
+                },
+                {
+                  title: 'leaf 1-2-1',
+                  expand: true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      buttonProps: {
+        type: 'default',
+        size: 'small'
+      }
     };
   },
+  methods: {
+    renderContent(h, { root, node, data }) {
+      return h('span', {
+        style: {
+          display: 'inline-block',
+          width: '100%'
+        }
+      }, [
+        h('span', [
+          h('Icon', {
+            props: {
+              type: this.iconType(node.node.hasChild, node.node.expand)
+            },
+            style: {
+              marginRight: '8px'
+            }
+          }),
+          h('span', {
+            on: {
+              contextmenu: function (e) {
+                // alert("hha")
+                e.preventDefault();
+                this.$refs.contextmenu.currentVisible = false;
+                this.$refs.contextmenu.$refs.reference = e.target;
+                this.$refs.contextmenu.currentVisible = true;
+              }.bind(this)
+            }
+          }, data.title)
+        ])
+      ]);
+    },
+    iconType(hasChild, expand) {
+      let iconType = 'ios-document';
+      if (hasChild) {
+        if (expand) {
+          iconType = 'ios-folder-open';
+        } else {
+          iconType = 'ios-folder';
+        }
+      } else {
+        iconType = 'ios-document';
+      }
+      return iconType;
+    }
+  }
 };
 </script>
 
