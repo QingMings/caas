@@ -40,10 +40,10 @@
 </template>
 
 <script>
-import IconImg from '@/components/IconImg/IconImg.vue';
+import {treeIcon} from '@/resource';
+
 export default {
   name: 'leftPane',
-  components: { IconImg },
   data() {
     return {
       value2: '1',
@@ -156,15 +156,15 @@ export default {
     },
     iconType(hasChild, expand) {
       console.info(process.env.BASE_URL);
-      let iconType = '../../image/left/tree/closefolder.png';
+      let iconType = treeIcon.closefolder;
       if (hasChild) {
         if (expand) {
-          iconType = 'i../../image/left/tree/openfolder.png';
+          iconType = treeIcon.openfolder;
         } else {
-          iconType = '../../image/left/tree/closefolder.png';
+          iconType = treeIcon.closefolder;
         }
       } else {
-        iconType = '../../image/left/tree/file.png';
+        iconType = treeIcon.file;
       }
       return iconType;
     }

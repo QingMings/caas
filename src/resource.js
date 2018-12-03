@@ -1,10 +1,16 @@
-const getImageUrl = key => `./image/top/menu/${key}`;
+
+const getImageUrl = key => `/image/top/menu/${key}`;
+const getTreeIcon = key => `/image/left/tree/${key}`;
 
 const constants = {
   CLIENT_NORMAL_MSG: 'CLIENT_NORMAL_MSG',
   CRAWLER_NORMAL_MSG: 'CRAWLER_NORMAL_MSG'
 };
-
+const treeIcon = {
+  closefolder: getTreeIcon('closefolder.png'),
+  openfolder: getTreeIcon('openfolder.png'),
+  file: getTreeIcon('file.png')
+}
 const menu = [
   {
     title: '数据管理',
@@ -112,5 +118,6 @@ const menu = [
 
 export {
   constants,
-  menu
+  menu,
+  treeIcon
 };
