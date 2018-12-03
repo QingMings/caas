@@ -4,7 +4,8 @@
 <template>
   <div id="viewer" class="layout">
     <Layout>
-      <Sider ref="side1" hide-trigger collapsible :collapsed-width="0" :width="250" v-model="isCollapsed">
+      <Sider ref="side1" hide-trigger collapsible :collapsed-width="0"
+             :width="250" v-model="isCollapsed">
         <left-pane></left-pane>
       </Sider>
       <Layout>
@@ -32,7 +33,7 @@ export default {
     onRequestBack() {
       const _vm = this;
       this.$ipcRenderer.on('collapsed-sider', (data) => {
-        console.info("Toggle")
+        console.info('Toggle');
         _vm.$refs.side1.toggleCollapse();
       });
     }

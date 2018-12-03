@@ -89,6 +89,23 @@ const menu = [
         icon: getImageUrl('ibaseproject.png')
       }
     ]
+  },
+  {
+    title: '航拍模型',
+    name: 'models',
+    icon: getImageUrl('maerial.png'),
+    children: [
+      {
+        title: '中关村',
+        name: 'model-ZhongGuanCun',
+        icon: getImageUrl('ibshaerial.png')
+      },
+      {
+        title: '马连洼',
+        name: 'model-MaLianWa',
+        icon: getImageUrl('imlwaerial.png')
+      }
+    ]
   }
 ];
 

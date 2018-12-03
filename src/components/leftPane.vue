@@ -4,6 +4,15 @@
       <Input search placeholder="输入单位名搜索"/>
     </div>
     <Collapse v-model="value2" accordion>
+      <Dropdown transfer ref="contextmenu" placement="bottom-start" style="display:none" trigger="click">
+        <DropdownMenu slot="list">
+          <DropdownItem>驴打滚</DropdownItem>
+          <DropdownItem>炸酱面</DropdownItem>
+          <DropdownItem>豆汁儿</DropdownItem>
+          <DropdownItem>冰糖葫芦</DropdownItem>
+          <DropdownItem>北京烤鸭</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
       <Panel name="1">
         按级别
         <!--<p slot="content">史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。</p>-->
@@ -32,44 +41,48 @@
 </template>
 
 <script>
+import IconImg from '@/components/IconImg/IconImg.vue';
 export default {
   name: 'leftPane',
+  components: { IconImg },
   data() {
     return {
       value2: '1',
       data5: [
         {
-          title: 'parent 1',
+          title: '中国农业科学院',
           expand: true,
-          render: (h, { root, node, data }) => h('span', {
-            style: {
-              display: 'inline-block',
-              width: '100%'
-            }
-          }, [
-            h('span', [
-              h('Icon', {
-                props: {
-                  type: 'ios-folder-outline'
-                },
-                style: {
-                  marginRight: '8px'
-                }
-              }),
-              h('span', data.title)
-            ]),
-            h('span', {
-              style: {
-                display: 'inline-block',
-                float: 'right',
-                marginRight: '32px'
-              }
-            })
-          ]),
+          hasChild: true,
+          // render: (h, { root, node, data }) => h('span', {
+          //   style: {
+          //     display: 'inline-block',
+          //     width: '100%'
+          //   }
+          // }, [
+          //   h('span', [
+          //     h('Icon', {
+          //       props: {
+          //         type: 'ios-folder-outline'
+          //       },
+          //       style: {
+          //         marginRight: '8px'
+          //       }
+          //     }),
+          //     h('span', data.title)
+          //   ]),
+          //   h('span', {
+          //     style: {
+          //       display: 'inline-block',
+          //       float: 'right',
+          //       marginRight: '32px'
+          //     }
+          //   })
+          // ]),
           children: [
             {
-              title: 'child 1-1',
+              title: '院部',
               expand: true,
+              hasChild: true,
               children: [
                 {
                   title: 'leaf 1-1-1',
@@ -82,8 +95,9 @@ export default {
               ]
             },
             {
-              title: 'child 1-2',
+              title: '作物科学研究所',
               expand: true,
+              hasChild: true,
               children: [
                 {
                   title: 'leaf 1-2-1',
@@ -113,13 +127,23 @@ export default {
         }
       }, [
         h('span', [
-          h('Icon', {
-            props: {
-              type: this.iconType(node.node.hasChild, node.node.expand)
-            },
+          h('img', {
             style: {
+              width: '16px',
+              verticalAlign: 'middle',
               marginRight: '8px'
+            },
+            attrs: {
+              src: this.iconType(node.node.hasChild, node.node.expand),
+              class: 'ivu-icon'
             }
+            // props: {
+            //   size: 12,
+            //   url: this.iconType(node.node.hasChild, node.node.expand)
+            // },
+            // style: {
+            //   marginRight: '8px'
+            // }
           }),
           h('span', {
             on: {
@@ -136,15 +160,16 @@ export default {
       ]);
     },
     iconType(hasChild, expand) {
-      let iconType = 'ios-document';
+
+      let iconType = '../../image/left/tree/closefolder.png';
       if (hasChild) {
         if (expand) {
-          iconType = 'ios-folder-open';
+          iconType = 'i../../image/left/tree/openfolder.png';
         } else {
-          iconType = 'ios-folder';
+          iconType = '../../image/left/tree/closefolder.png';
         }
       } else {
-        iconType = 'ios-document';
+        iconType = '../../image/left/tree/file.png';
       }
       return iconType;
     }

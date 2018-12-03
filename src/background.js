@@ -1,4 +1,6 @@
-import { app, BrowserWindow, protocol, Menu, remote, ipcMain } from 'electron';
+import {
+  app, BrowserWindow, protocol, Menu, remote, ipcMain
+} from 'electron';
 import { createProtocol, installVueDevtools } from 'vue-cli-plugin-electron-builder/lib';
 import appInfo from './appinfo';
 import IpcMgr from './ipcMgr';
@@ -12,7 +14,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 let win_about;
-let logo = path.join(__dirname, 'assets/logo.png');
+const logo = path.join(__dirname, 'assets/logo.png');
 
 // Standard scheme must be registered before the app is ready
 protocol.registerStandardSchemes(['app'], { secure: true });

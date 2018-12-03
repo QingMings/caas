@@ -304,10 +304,24 @@ html, body {
               padding: 0 16px;
               background-color: #3c9089;
 
-              
+              .ivu-collapse-content-box {
+                padding-top: 1px;
+                padding-bottom: 1px;
+              }
 
-              .ivu-checkbox-input {
-                background: #8fd2ccc9;
+              .ivu-checkbox-inner {
+                background-color: #9ed6d3;
+                border: 1px solid #5f6267;
+              }
+
+              .ivu-checkbox-checked .ivu-checkbox-inner {
+                border-color: #0a6336;
+                background-color: #208065;
+              }
+
+              .ivu-checkbox-indeterminate .ivu-checkbox-inner {
+                border-color: #0a6336;
+                background-color: #208065;
               }
             }
           }
@@ -336,3 +350,33 @@ html, body {
     }
   }
 }
+
+.ivu-select-dropdown {
+  background-color: #f0f5fa;
+}
+.ivu-dropdown-menu {
+  min-width: 82px;
+
+  .ivu-dropdown-item {
+
+    padding: 5px 16px;
+
+
+    &:hover {
+      background: #d7dccc;
+    }
+    //&:after {
+    //  content: '';
+    //  background-color: #8d9093;
+    //  display: table;
+    //  width: 71px;
+    //  height: 3px;
+    //  position: absolute;
+    //  top: 29px;
+    //  left: 10px;
+    //  border: 2px solid #fff;
+    //  border-bottom: 0;
+    //}
+  }
+}
+

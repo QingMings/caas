@@ -7,9 +7,9 @@ aa
 export default {
   name: 'bottomPane',
   data() {
-    return {}
+    return {};
   }
-}
+};
 </script>
 <style>
 
