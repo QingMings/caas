@@ -6,11 +6,10 @@
     <Collapse v-model="value2" accordion>
       <Dropdown transfer ref="contextmenu" placement="bottom-start" style="display:none" trigger="click">
         <DropdownMenu slot="list">
-          <DropdownItem>驴打滚</DropdownItem>
-          <DropdownItem>炸酱面</DropdownItem>
-          <DropdownItem>豆汁儿</DropdownItem>
-          <DropdownItem>冰糖葫芦</DropdownItem>
-          <DropdownItem>北京烤鸭</DropdownItem>
+          <DropdownItem>单位分布</DropdownItem>
+          <DropdownItem>建筑分布</DropdownItem>
+          <DropdownItem>查看属性</DropdownItem>
+          <DropdownItem>定位</DropdownItem>
         </DropdownMenu>
       </Dropdown>
       <Panel name="1">
@@ -85,11 +84,7 @@ export default {
               hasChild: true,
               children: [
                 {
-                  title: 'leaf 1-1-1',
-                  expand: true
-                },
-                {
-                  title: 'leaf 1-1-2',
+                  title: '所区',
                   expand: true
                 }
               ]
@@ -100,11 +95,11 @@ export default {
               hasChild: true,
               children: [
                 {
-                  title: 'leaf 1-2-1',
+                  title: '北京昌平马池口基地',
                   expand: true
                 },
                 {
-                  title: 'leaf 1-2-1',
+                  title: '河北沽源小麦育种夏繁基地',
                   expand: true
                 }
               ]
@@ -160,7 +155,7 @@ export default {
       ]);
     },
     iconType(hasChild, expand) {
-
+      console.info(process.env.BASE_URL);
       let iconType = '../../image/left/tree/closefolder.png';
       if (hasChild) {
         if (expand) {

@@ -109,7 +109,12 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       builderOptions: {
-        productName: appInfo.appName
+        productName: appInfo.appName,
+        buildDependenciesFromSource: false,
+        nsis: {
+          oneClick: false,
+          allowToChangeInstallationDirectory: true
+        }
       }
     }
   }
