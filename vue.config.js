@@ -114,7 +114,13 @@ module.exports = {
         nsis: {
           oneClick: false,
           allowToChangeInstallationDirectory: true
-        }
+        },
+        win: {
+          icon: 'build/appIcon.ico'
+        },
+        files: [
+          '!node_modules'
+        ]
       }
     }
   }
