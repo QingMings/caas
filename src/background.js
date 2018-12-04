@@ -27,7 +27,9 @@ function createWindow() {
     minHeight: 768,
     minWidth: 1024,
     // titleBarStyle: 'hiddenInset',
-    frame: false
+    frame: false,
+    backgroundColor: '#3c9089',
+    show: false
   });
 
   if (isDevelopment || process.env.IS_TEST) {
@@ -35,10 +37,14 @@ function createWindow() {
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
+    win.webContents.openDevTools();
     createProtocol('app');
     // Load the index.html when not in development
     win.loadURL('app://./index.html');
   }
+  win.once('ready-to-show', () => {
+    win.show();
+  });
 
   win.on('closed', () => {
     win = null;
@@ -114,6 +120,7 @@ app.on('ready', async () => {
     await installVueDevtools();
     // console.info(remote.);
   }
+  await installVueDevtools();
   createWindow();
   createMenu();
 });
